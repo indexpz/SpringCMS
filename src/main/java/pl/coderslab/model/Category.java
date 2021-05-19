@@ -3,6 +3,7 @@ package pl.coderslab.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name="categorys")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,5 +36,14 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

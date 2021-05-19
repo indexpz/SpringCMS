@@ -6,34 +6,46 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Table(name="articles")
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(length = 200, nullable = false)
     private String title;
+
     @Column(length = 100, nullable = false)
-    @OneToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
+
     @Column
-    @OneToMany
+    @OneToMany//(mappedBy = "article")
     @JoinColumn(name = "category_id")
     private List<Category> categories;
+
     @Column(length = 255)
     private String content;
+
     @Column(name = "created_on")
     private LocalDateTime createdOn;
+
     @Column(name = "updated_on")
     private LocalDateTime updatedOn;
+
     @PrePersist
     public void prePersist() {
         createdOn = LocalDateTime.now();
     }
+
     @PreUpdate
     public void preUpdate() {
         updatedOn = LocalDateTime.now();
     }
+
+
+
 
     public Long getId() {
         return id;
@@ -89,5 +101,18 @@ public class Article {
 
     public void setUpdatedOn(LocalDateTime updatedOn) {
         this.updatedOn = updatedOn;
+    }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author=" + author +
+                ", categories=" + categories +
+                ", content='" + content + '\'' +
+                ", createdOn=" + createdOn +
+                ", updatedOn=" + updatedOn +
+                '}';
     }
 }
