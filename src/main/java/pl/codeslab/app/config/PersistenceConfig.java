@@ -8,7 +8,9 @@ import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import javax.persistence.EntityManagerFactory;
 
 @Configuration
+
 public class PersistenceConfig {
+
     @Bean
     public LocalEntityManagerFactoryBean entityManagerFactory() {
         LocalEntityManagerFactoryBean entityManagerFactoryBean = new LocalEntityManagerFactoryBean();
