@@ -24,3 +24,4 @@ public class PersistenceConfig {
         return jpaTransactionManager;
     }
 }
+

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pl.codeslab.app.domain.model.Article;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 

@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "articles")
 @Getter
 @Setter
-@ToString
+//@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class Article {
@@ -25,8 +25,8 @@ public class Article {
     @OneToOne(optional = false)
     private Author author;
 
-    @OneToMany(mappedBy = "categorys")
-    private List<Category> categories = new ArrayList<>();
+//    @OneToMany(mappedBy = "categorys")
+//    private List<Category> categories = new ArrayList<>();
 
     @Column
     private String content;
