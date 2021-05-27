@@ -3,6 +3,7 @@ package pl.codeslab.app.domain.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
 @Table(name="categorys")

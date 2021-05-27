@@ -4,7 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.codeslab.app.domain.dao.AuthorDao;
+import pl.codeslab.app.domain.model.Article;
 import pl.codeslab.app.domain.model.Author;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/authors")
@@ -19,7 +23,7 @@ public class AuthorController {
 
     @GetMapping("/add")
     public String add() {
-        Author modelObject = new Author(null, "Bla", "Cala");
+        Author modelObject = new Author(null, "Bla", "Cala", List.of(null));
         authorDao.save(modelObject);
         return "Zapisano pod id = " + modelObject.getId();
     }
@@ -43,5 +47,12 @@ public class AuthorController {
     public String get() {
         Author modelObject = authorDao.findById(1L);
         return modelObject.toString();
+    }
+
+    @GetMapping("/all")
+    private String all(){
+        return authorDao.findAll().stream()
+                .map(Author::toString)
+                .collect(Collectors.joining());
     }
 }

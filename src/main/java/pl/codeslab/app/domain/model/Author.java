@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name="authors")
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "articles")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Author {
@@ -24,4 +24,5 @@ public class Author {
     @OneToMany
     @JoinColumn(name="author_id")
     private List<Article> articles = new ArrayList<>();
+
 }

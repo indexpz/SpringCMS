@@ -3,6 +3,7 @@ package pl.codeslab.app.domain.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import java.util.List;
 @Table(name = "articles")
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "categories")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Article {
@@ -27,8 +28,20 @@ public class Article {
 
 
 
-    @Column()
-    private String created;// (wartość ma być automatycznie dodawana podczas zapisu)
-    @Column()
-    private String updated;//
+    @Column
+    private LocalDateTime created;
+    @Column
+    private LocalDateTime updated;
+
+    @PrePersist
+    public void prePersist() {
+        created = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updated = LocalDateTime.now();
+    }
+
+
 }
