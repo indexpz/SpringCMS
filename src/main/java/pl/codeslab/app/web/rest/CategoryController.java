@@ -24,8 +24,8 @@ public class CategoryController {
 
     @GetMapping("/add")
     public String add() {
-        Article article = new Article();
-        Category modelObject = new Category(null, "sport", "description", article);
+
+        Category modelObject = new Category(null, "sport", "description");
         categoryDao.save(modelObject);
         return "Zapisano pod id = " + modelObject.getId();
     }

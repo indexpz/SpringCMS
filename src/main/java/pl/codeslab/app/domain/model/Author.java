@@ -7,22 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="authors")
+@Table(name = "authors", uniqueConstraints = @UniqueConstraint(columnNames = {"first_name", "last_name"}))
 @Getter
 @Setter
-@ToString(exclude = "articles")
-@AllArgsConstructor
+@ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class Author {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name="last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
-    @OneToMany
-    @JoinColumn(name="author_id")
-    private List<Article> articles = new ArrayList<>();
-
 }
+

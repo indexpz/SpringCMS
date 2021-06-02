@@ -31,6 +31,12 @@ public class ArticleDao {
     }
 
     public List<Article> findAll() {
-        return em.createQuery("SELECT x from Article x", Article.class).getResultList();
+        return em.createQuery("select a from Article a", Article.class).getResultList();
+    }
+
+    public List<Article> findQuantityArticlesByDateDesc(int quantity){
+       List<Article> articles = em.createQuery("select a from Article a order by a.created DESC", Article.class).getResultList();
+
+        return articles;
     }
 }

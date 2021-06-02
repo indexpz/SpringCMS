@@ -22,7 +22,7 @@ public class ArticleController {
 
     @GetMapping("/add")
     public String add() {
-        Article modelObject = new Article(null, "Tytuł", "daasd", List.of(new Category()), LocalDateTime.now(), null);
+        Article modelObject = new Article();
         articleDao.save(modelObject);
         return "Zapisano pod id = " + modelObject.getId();
     }

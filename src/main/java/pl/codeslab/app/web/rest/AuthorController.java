@@ -23,7 +23,7 @@ public class AuthorController {
 
     @GetMapping("/add")
     public String add() {
-        Author modelObject = new Author(null, "Bla", "Cala", List.of(null));
+        Author modelObject = new Author(null, "Bla", "Cala");
         authorDao.save(modelObject);
         return "Zapisano pod id = " + modelObject.getId();
     }

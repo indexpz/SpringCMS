@@ -5,7 +5,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "articles")
@@ -18,20 +20,22 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(length = 200)
+    @Column(length = 200, nullable = false)
     private String title;
-    @Column(length = 2500)
+    @Column(columnDefinition = "TEXT")
     private String content;
-
-    @OneToMany(mappedBy = "article")
-    private List<Category> categories = new ArrayList<>();// - (powiązanie relacją do klasy Category) - artykuł może należeć do wielu kategorii
-
-
-
-    @Column
+    @Column(updatable = false)
     private LocalDateTime created;
-    @Column
+    @Column(insertable = false)
     private LocalDateTime updated;
+    @ManyToOne(optional = false)
+    private Author author;
+    @ManyToMany
+    @JoinTable(name = "article_categories",
+            joinColumns = @JoinColumn(name = "article_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categories = new HashSet<>();
 
     @PrePersist
     public void prePersist() {

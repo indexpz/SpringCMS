@@ -13,6 +13,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <spring.framework.version>5.1.9.RELEASE</spring.framework.version>
     </properties>
+
     <dependencies>
         <!-- Zależności dla warstwy webowej -->
         <dependency>
@@ -30,12 +31,19 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
         <!-- Zależności utilsowe, np. logger -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.18</version>
+        </dependency>
+
         <!-- Zależności dla warstwy bazy danych/ORM        -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -52,11 +60,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.20</version>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.18</version>
-        </dependency>
+
         <!-- Zależności bzdety, aby Hibernate działał -->
         <dependency>
             <groupId>javax.activation</groupId>
@@ -78,7 +82,15 @@
             <artifactId>jaxb-impl</artifactId>
             <version>2.3.0</version>
         </dependency>
-
-
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1.1-jre</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
     </dependencies>
 </project>
