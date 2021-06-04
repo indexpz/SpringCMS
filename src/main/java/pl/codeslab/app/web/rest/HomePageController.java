@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 public class HomePageController {
 
     private final ArticleDao articleDao;
@@ -21,14 +21,7 @@ public class HomePageController {
     }
 
     @GetMapping("/")
-    public String prepareHome(Model model){
-
-//        List<Article> articles = articleDao.findQuantityArticlesByDateDesc(5);
-
-//        return articleDao.findAll().stream()
-//                .map(Article::toString)
-//                .collect(Collectors.joining());
-
+    public String prepareHome(){
         return articleDao.findQuantityArticlesByDateDesc(2).stream()
                 .map(Article::toString)
                 .collect(Collectors.joining());

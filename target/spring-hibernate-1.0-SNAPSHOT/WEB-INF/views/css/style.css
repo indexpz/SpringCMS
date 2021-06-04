@@ -1,0 +1,17 @@
+*{
+    background-color: #bab9b9;
+    color: #c92f00;
+    font-family: Roboto;
+}
+
+button{
+    border-style: none;
+    background-color: black;
+    color: white;
+}
+
+table{
+    border: #c92f00;
+
+}
+

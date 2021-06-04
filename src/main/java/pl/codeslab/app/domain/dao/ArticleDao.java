@@ -7,6 +7,7 @@ import pl.codeslab.app.domain.model.Article;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 @Transactional
@@ -34,9 +35,10 @@ public class ArticleDao {
         return em.createQuery("select a from Article a", Article.class).getResultList();
     }
 
-    public List<Article> findQuantityArticlesByDateDesc(int quantity){
+    public List<Article> findQuantityArticlesByDateDesc(long quantity){
        List<Article> articles = em.createQuery("select a from Article a order by a.created DESC", Article.class).getResultList();
-
-        return articles;
+        return articles.stream()
+                .limit(quantity)
+                .collect(Collectors.toList());
     }
 }

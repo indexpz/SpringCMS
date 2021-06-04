@@ -1,5 +1,6 @@
 package pl.codeslab.app.domain.dao;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pl.codeslab.app.domain.model.Category;
@@ -33,4 +34,6 @@ public class CategoryDao {
     public List<Category> findAll() {
         return em.createQuery("SELECT x from Category x", Category.class).getResultList();
     }
+
+
 }

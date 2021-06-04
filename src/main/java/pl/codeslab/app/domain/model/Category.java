@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 
 @Entity
-@Table(name="categorys")
+@Table(name="categories")
 @Getter @Setter @ToString
 @AllArgsConstructor @NoArgsConstructor
 public class Category {

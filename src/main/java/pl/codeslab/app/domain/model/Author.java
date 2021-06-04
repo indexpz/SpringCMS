@@ -22,5 +22,9 @@ public class Author {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    public String getFullName() {
+        return String.format("%s %s", firstName, lastName);
+    }
 }
 

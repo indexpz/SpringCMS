@@ -6,6 +6,7 @@ import pl.codeslab.app.domain.model.Author;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.awt.print.Book;
 import java.util.List;
 
 @Repository
@@ -33,4 +34,6 @@ public class AuthorDao {
     public List<Author> findAll() {
         return em.createQuery("SELECT x from Author x", Author.class).getResultList();
     }
+
+
 }
